@@ -12,8 +12,8 @@ main PROC far
     mov ds, ax
 
     mov dx, offset msg      ; writeln("Hello world!")
-    mov ah, 09h
-    int 21h
+    mov ah, 09h             ; indicates that stored string must be printed to std output
+    int 21h                 ; calls the function at AH = 09
 
     mov ah, 4Ch             ; Program terminate for .EXE files
     int 21h
