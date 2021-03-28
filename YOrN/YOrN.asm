@@ -23,7 +23,9 @@ get_key:
     int 21h                     ; Calls func to read a char
     cmp al, 'Y'                 ; is it a 'Y'
     je yes                      ; jump to yes if al equals 'Y'
-    jmp no
+    cmp al, 'N'
+    je no
+    jmp get_key
 yes:
     mov dx, offset yesmsg       ; writeln("Your response is a Yes!")
     mov ah, 09h
@@ -34,7 +36,7 @@ no:
     mov ah, 09h
     int 21h
 endexe:
-    mov ah, 4Ch
+    mov ah, 4Ch                 ; Program terminate for .EXE files
     int 21h
 main ENDP
     END
